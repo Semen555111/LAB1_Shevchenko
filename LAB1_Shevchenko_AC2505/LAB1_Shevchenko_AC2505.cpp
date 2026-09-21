@@ -230,7 +230,7 @@ int main()
 			cout << "4. Create KS" << endl;
 			cout << "5. Edit KS" << endl;
 			cout << "6. Show KS" << endl;
-			cout << "7. Save piper" << endl;
+			cout << "7. Save pip" << endl;
 			cout << "8. Load pipe" << endl;
 			cout << "9. Save KS" << endl;
 			cout << "10. Load KS" << endl;
