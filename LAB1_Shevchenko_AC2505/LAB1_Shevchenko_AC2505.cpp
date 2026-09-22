@@ -31,7 +31,7 @@ void create_pipe(PIPE& p) {
 	cin >> p.length;
 	while (cin.fail() || p.length <= 0) {
 		cin.clear();                                          // снять флаг ошибки с потока
-		cin.ignore(100000000000, '\n');  // выбросить неверный ввод
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');  // выбросить неверный ввод
 		cout << "Error, length must be a positive number -> ";
 		cin >> p.length;
 	}
@@ -40,7 +40,7 @@ void create_pipe(PIPE& p) {
 	cin >> p.diameter;
 	while (cin.fail() || p.diameter <= 0) {
 		cin.clear();
-		cin.ignore(10000000000000, '\n');
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		cout << "Error, diameter must be a positive number -> ";
 		cin >> p.diameter;
 	}
@@ -50,7 +50,7 @@ void create_pipe(PIPE& p) {
 	cin >> working;
 	while (cin.fail() || (working != 0 && working != 1)) {
 		cin.clear();
-		cin.ignore(10000000000000000, '\n');
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		cout << "Error, enter ONLY 0 or 1 -> ";
 		cin >> working;
 	}
@@ -62,7 +62,7 @@ void edit_pipe(PIPE& p) {
 	cin >> c;
 	if (cin.fail()) {
 		cin.clear();
-		cin.ignore(10000000000, '\n');
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		cout << "Error, choose the right option" << "\n";
 		return;
 	}
@@ -79,7 +79,7 @@ void edit_pipe(PIPE& p) {
 		cin >> working;
 		while (cin.fail() || (working != 0 && working != 1)) {
 			cin.clear();
-			cin.ignore(100000000000, '\n');
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
 			cout << "Error, enter ONLY 0 or 1 -> ";
 			cin >> working;
 		}
@@ -123,7 +123,7 @@ void edit_ks(KS& s) {
 	cin >> d;
 	if (cin.fail()) {
 		cin.clear();
-		cin.ignore(100000000000, '\n');
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		cout << "Error, choose the right option" << "\n";
 		return;
 	}
@@ -139,7 +139,7 @@ void edit_ks(KS& s) {
 		cin >> s.worksA;
 		while (cin.fail() || s.worksA < 0 || s.worksA > s.works) {
 			cin.clear();
-			cin.ignore(10000000000000, '\n');
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
 			cout << "Error, active works must be from 0 to " << s.works << " -> ";
 			cin >> s.worksA;
 		}
