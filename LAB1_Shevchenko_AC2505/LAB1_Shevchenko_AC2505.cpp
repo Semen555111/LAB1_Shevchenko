@@ -1,5 +1,4 @@
-﻿// LAB1_Shevchenko_AC2505.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿
 
 #include <iostream>
 #include <string>
@@ -30,8 +29,8 @@ void create_pipe(PIPE& p) {
 	cout << "Length -> ";
 	cin >> p.length;
 	while (cin.fail() || p.length <= 0) {
-		cin.clear();                                          // снять флаг ошибки с потока
-		cin.ignore(numeric_limits<streamsize>::max(),'\n');  // выбросить неверный ввод
+		cin.clear();                                          
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');  
 		cout << "Error, length must be a positive number -> ";
 		cin >> p.length;
 	}
@@ -102,21 +101,47 @@ void edit_pipe(PIPE& p) {
 
 }
 
-void create_ks(KS& s) { 
+void create_ks(KS& s) {
 	cout << "Name -> ";
-	cin.ignore();
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 	getline(cin, s.name);
+
 	cout << "Works -> ";
 	cin >> s.works;
+
+	while (cin.fail() || s.works <= 0) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		cout << "Error, works must be a positive integer -> ";
+		cin >> s.works;
+	}
+
 	cout << "Active Works -> ";
 	cin >> s.worksA;
+
+	while (cin.fail() || s.worksA < 0 || s.worksA > s.works) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		cout << "Error, active works must be from 0 to "
+			 << s.works << " -> ";
+
+		cin >> s.worksA;
+	}
+
 	cout << "Efficiency -> ";
 	cin >> s.efficiency;
-	if (s.efficiency < 0 || s.efficiency > 100) {
-		cout << "Error, efficiency must be between 0 and 100" << "\n";
-		s.efficiency = 0;
+
+	while (cin.fail() || s.efficiency < 0 || s.efficiency > 100) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		cout << "Error, efficiency must be a number from 0 to 100 -> ";
+		cin >> s.efficiency;
 	}
 }
+
 void edit_ks(KS& s) {
 	cout << "Choose what you want to edit: 1 - Name, 2 - Active Works, 0 - Main menu" << "\n";
 	int d;
